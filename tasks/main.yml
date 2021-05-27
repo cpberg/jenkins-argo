@@ -1,0 +1,9 @@
+## jenkis-argo role
+---
+- name: Template application for argocd to deploy 
+  template: 
+    src: application.yaml.j2
+    dest: application.yaml 
+
+- name: ARGOCD | Deploy {{ app.meta.name }} to {{ app.spec.destination.server }}:{{ app.spec.destination.namespace }}
+  command: "kubectl apply -f application.yaml" 

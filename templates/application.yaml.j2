@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ app.meta.name }}
+  namespace: {{ app.meta.namespace }}
+spec:
+  project: {{ app.spec.project }}
+  source:
+    repoURL: {{ app.spec.source.repoUrl }}
+    chart: {{ app.spec.source.chart }}
+  destination:
+    server: {{app.spec.destination.server }} 
+    namespace: {{app.spec.destination.namespace }}
+  syncPolicy:
+    automated: 
+      prune: {{ app.syncPolicy.automated.prune }} 
+      selfHeal: {{ app.syncPolicy.automated.selfHeal }}  
+      allowEmpty: {{ app.syncPolicy.automated.allowEmpty }}      
+  syncOptions:           
+    - Validate={{ app.syncPolicy.syncOptions.validate }}
+    - CreateNamespace={{ app.syncPolicy.syncOptions.createNamespace }}
+  retry:
+    limit: {{ app.syncPolicy.retry.limit }}

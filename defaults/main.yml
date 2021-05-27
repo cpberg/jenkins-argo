@@ -1,0 +1,25 @@
+## Role default variables
+---
+app:
+  meta:
+    name: jenkins
+    namespace: argocd
+  spec:
+    project: devops
+    source:
+      repoUrl: https://github.com/jenkinsci/helm-charts.git
+      chart: jenkins
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: devops
+  syncPolicy:
+    automated: 
+      prune: true 
+      selfHeal: true 
+      allowEmpty: false
+    syncOptions:
+      validate: false
+      createNamespace: true
+    retry:
+      limit: 5
+

@@ -16,8 +16,8 @@ spec:
       prune: {{ app.syncPolicy.automated.prune }} 
       selfHeal: {{ app.syncPolicy.automated.selfHeal }}  
       allowEmpty: {{ app.syncPolicy.automated.allowEmpty }}      
-  syncOptions:           
-    - Validate={{ app.syncPolicy.syncOptions.validate }}
-    - CreateNamespace={{ app.syncPolicy.syncOptions.createNamespace }}
-  retry:
-    limit: {{ app.syncPolicy.retry.limit }}
+    syncOptions:           
+      - Validate={{ app.syncPolicy.syncOptions.validate }}
+      - CreateNamespace={{ app.syncPolicy.syncOptions.createNamespace }}
+    retry:
+      limit: {{ app.syncPolicy.retry.limit }}
